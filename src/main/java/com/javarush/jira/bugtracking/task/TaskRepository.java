@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,4 +38,7 @@ public interface TaskRepository extends BaseRepository<Task> {
             WHERE id IN (SELECT child FROM task_with_subtasks)
             """, nativeQuery = true)
     void setTaskAndSubTasksSprint(long taskId, Long sprintId);
+
+    @Query("SELECT t FROM Task t JOIN t.tags tag WHERE tag = :tag")
+    List<Task> findAllByTag(String tag);
 }

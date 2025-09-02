@@ -18,3 +18,24 @@ spring:
   mail:
     username: ${MAIL_USERNAME:jira4jr@gmail.com}
     password: ${MAIL_PASSWORD:zdfzsrqvgimldzyj}
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    username: ${DB_USERNAME:jira}
+    password: ${DB_PASSWORD:JiraRush}
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    username: ${DB_USERNAME_TEST:jira}
+    password: ${DB_PASSWORD_TEST:JiraRush}

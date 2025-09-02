@@ -1,30 +1,8 @@
-## [REST API](http://localhost:8080/doc)
-
-## Концепция:
-
-- Spring Modulith
-    - [Spring Modulith: достигли ли мы зрелости модульности](https://habr.com/ru/post/701984/)
-    - [Introducing Spring Modulith](https://spring.io/blog/2022/10/21/introducing-spring-modulith)
-    - [Spring Modulith - Reference documentation](https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/)
-
-```
-  url: jdbc:postgresql://localhost:5432/jira
-  username: jira
-  password: JiraRush
-```
-
-- Есть 2 общие таблицы, на которых не fk
-    - _Reference_ - справочник. Связь делаем по _code_ (по id нельзя, тк id привязано к окружению-конкретной базе)
-    - _UserBelong_ - привязка юзеров с типом (owner, lead, ...) к объекту (таска, проект, спринт, ...). FK вручную будем
-      проверять
-
-## Аналоги
-
-- https://java-source.net/open-source/issue-trackers
-
-## Тестирование
-
-- https://habr.com/ru/articles/259055/
-
-Список выполненных задач:
+## Список выполненных задач:
+- [x] Удалены ссылки на регистрацию через VK и Yandex
+- [x] Вся чувствительная информация (пароли, токены) вынесена в файл application-security.yaml
+- [x] Добавлена возможность добавления тегов к задачам + фильтрация по ним
+- [x] Добавлена возможность получения времени нахождения задачи в определенном статусе
+- [x] Загрузка файлов (метод output) переделана на работу с библиотекой nio
+- [x] Добавлены тесты для класса ProfileRestController
 ...

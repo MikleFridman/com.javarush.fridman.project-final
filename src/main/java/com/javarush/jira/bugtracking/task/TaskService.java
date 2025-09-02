@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -157,5 +158,18 @@ public class TaskService {
             throw new NotFoundException("Tag not found");
         }
         task.getTags().remove(tag);
+    }
+
+    public List<Task> getAllByTag(String tag) {
+        return handler.getRepository().findAllByTag(tag);
+    }
+
+    public Duration getTimeInStatus(Task task, String startStatusCode, String endStatusCode) {
+        LocalDateTime timeStart = activityHandler.getRepository().getCreated(task.id(), startStatusCode);
+        LocalDateTime timeEnd = activityHandler.getRepository().getCreated(task.id(), endStatusCode);
+        if (timeStart == null || timeEnd == null) {
+            return Duration.ZERO;
+        }
+        return Duration.between(timeStart, timeEnd);
     }
 }

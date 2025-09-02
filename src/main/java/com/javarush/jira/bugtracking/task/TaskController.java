@@ -145,6 +145,12 @@ public class TaskController {
         activityService.update(activityTo, id);
     }
 
+    @GetMapping("/tasks/by-tag/{tag}")
+    public List<TaskTo> getAllByTag(@PathVariable String tag) {
+        List<Task> tasks = taskService.getAllByTag(tag);
+        return handler.getMapper().toToList(tasks);
+    }
+
     @PostMapping("/{id}/add-tag/{tag}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void addTag(@PathVariable long id, @PathVariable String tag) {

@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -35,6 +36,9 @@ public class Activity extends BaseEntity implements HasAuthorId {
     @NotNull
     @Column(name = "author_id")
     private Long authorId;
+    @CreationTimestamp
+    @Column(name = "created", updatable = false)
+    private LocalDateTime created;
     @UpdateTimestamp
     @Nullable
     @Column(name = "updated")
